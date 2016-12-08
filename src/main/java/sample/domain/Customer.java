@@ -8,7 +8,7 @@ import info.archinnov.achilles.annotations.Table;
  * @author Andrii Duplyk
  *
  */
-@Table(table = "customers")
+@Table(keyspace = "sample", table = "customers")
 public class Customer {
 
 	@PartitionKey
