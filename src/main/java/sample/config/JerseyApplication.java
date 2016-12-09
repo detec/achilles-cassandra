@@ -1,6 +1,11 @@
 package sample.config;
 
+// import static org.glassfish.jersey.servlet.ServletProperties.FILTER_STATIC_CONTENT_REGEX;
+import static org.glassfish.jersey.servlet.ServletProperties.FILTER_FORWARD_ON_404;
+
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
@@ -26,6 +31,7 @@ public class JerseyApplication extends Application {
 		beanConfig.setBasePath("/api");
 		beanConfig.setResourcePackage("io.swagger.resources");
 		beanConfig.setScan(true);
+
 	}
 
 	@Override
@@ -38,6 +44,20 @@ public class JerseyApplication extends Application {
 		set.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 
 		return set;
+	}
+
+	/**
+	 * We need to use swagger ui static resources
+	 */
+	@Override
+	public Map<String, Object> getProperties() {
+
+		Map<String, Object> propertiesMap = new HashMap<>();
+		// propertiesMap.put(FILTER_STATIC_CONTENT_REGEX, "/.*html");
+		propertiesMap.put(FILTER_FORWARD_ON_404, true);
+
+		return propertiesMap;
+
 	}
 
 }
