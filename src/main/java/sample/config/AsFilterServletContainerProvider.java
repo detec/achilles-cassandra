@@ -19,11 +19,12 @@ import org.glassfish.jersey.servlet.internal.spi.ServletContainerProvider;
  * @author Andrii Duplyk
  *
  */
+
 public class AsFilterServletContainerProvider implements ServletContainerProvider {
 
 	private static final Logger LOGGER = Logger.getLogger(AsFilterServletContainerProvider.class.getName());
 
-	// @Override
+	@Override
 	public void preInit(ServletContext context, Set<Class<?>> classes) throws ServletException {
 		final Class<? extends Application> applicationCls = getApplicationClass(classes);
 		if (applicationCls != null) {
@@ -80,24 +81,16 @@ public class AsFilterServletContainerProvider implements ServletContainerProvide
 		return path;
 	}
 
+	@Override
 	public void postInit(ServletContext context, Set<Class<?>> classes, Set<String> names) throws ServletException {
 	}
 
+	@Override
 	public void onRegister(ServletContext context, Set<String> set) throws ServletException {
 	}
 
 	@Override
 	public void configure(ResourceConfig config) throws ServletException {
-	}
-
-	@Override
-	public void init(ServletContext arg0) throws ServletException {
-
-	}
-
-	@Override
-	public void onRegister(ServletContext arg0, String... arg1) throws ServletException {
-
 	}
 
 }
