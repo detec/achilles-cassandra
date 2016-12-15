@@ -13,6 +13,7 @@ import io.swagger.jaxrs.config.BeanConfig;
  *
  */
 @ApplicationPath("/")
+// @ApplicationScoped
 public class JerseyResourceConfig extends ResourceConfig {
 
 	public JerseyResourceConfig() {
